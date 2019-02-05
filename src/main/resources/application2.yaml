@@ -1,0 +1,8 @@
+person:
+  - haaha
+  - lelel
+name: lee ha
+server:
+  port:
+    key: server.port
+    value: 20020
