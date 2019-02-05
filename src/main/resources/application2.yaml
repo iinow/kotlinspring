@@ -3,6 +3,7 @@ person:
   - lelel
 name: lee ha
 server:
-  port:
-    key: server.port
-    value: 20020
+  ports:
+    -
+      key: server.port
+      value: 9221

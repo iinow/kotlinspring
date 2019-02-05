@@ -17,15 +17,16 @@ class YamlConfig {
     lateinit var name: String
     lateinit var server: Server
 
-    fun getData(): String = "${person.toList()}, $name, port : ${server.port.key}, ${server.port.value}"
-
     companion object {
         class Server{
-            lateinit var port: Port
+            lateinit var ports: Array<Port>
         }
         class Port{
             var key:String = ""
-            var value: Int = 0
+            var value: String = ""
         }
     }
+    fun getData(): String = "${person.toList()}, $name,"// port : ${server.port.key}, ${server.port.value}
+
+    fun getConfigurationInfo(): Map<String, String> = this.server.ports.map { Pair(it.key, it.value) }.toMap()
 }

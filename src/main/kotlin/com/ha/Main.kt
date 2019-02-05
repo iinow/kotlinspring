@@ -46,7 +46,8 @@ class Two {
         val yaml = reader.read(YamlConfig::class.java)
 
         val app = SpringApplication(Main::class.java)
-        app.setDefaultProperties(mapOf(Pair(yaml.server.port.key, yaml.server.port.value)))
+        app.setDefaultProperties(yaml.getConfigurationInfo())
+
         app.run(*args)
     }
 }
