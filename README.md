@@ -1,2 +1,0 @@
-# kotlinspring
-Kotlin + Gradle + SpringBoot

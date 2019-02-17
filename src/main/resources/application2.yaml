@@ -1,9 +1,0 @@
-person:
-  - haaha
-  - lelel
-name: lee ha
-server:
-  ports:
-    -
-      key: server.port
-      value: 9221
