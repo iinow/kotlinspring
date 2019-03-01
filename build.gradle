@@ -7,7 +7,6 @@ plugins {
 
 apply plugin: 'kotlin-jpa'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'war'
 
 group = 'com.ha'
 version = '0.0.1-SNAPSHOT'
@@ -21,7 +20,7 @@ repositories {
 
 dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive' 
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
