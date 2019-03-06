@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.server.Session
 import org.springframework.test.context.junit4.SpringRunner
 import java.io.*
 import java.net.*
+import java.util.*
 import javax.servlet.http.Cookie
 
 //@RunWith(SpringRunner::class)
@@ -100,14 +101,38 @@ class ExApplicationTests {
         }
         val ip = Inet4Address.getLocalHost()
         val list = listOf(22, 3389)
-        for(port in list){
+        for (port in list) {
             try {
-                val sock = Socket(ip.hostName, port)
+//                val sock = Socket(ip.hostName, port)
+                val sock = Socket()
+                val addr = InetSocketAddress(ip.hostName, port)
+                sock.connect(addr)
+                sock.connect(addr, 5000)
                 println("There is a server on port $port of ${ip.hostAddress}")
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 println(e)
                 println("There's not a server on port $port of ${ip.hostAddress}")
             }
+        }
+    }
+
+    @Test
+    fun serversocket() {
+        try {
+            val server = ServerSocket(5678)
+            println("실행")
+            while(true){
+                val clientSocket = server.accept()
+                val out = OutputStreamWriter(clientSocket.getOutputStream())
+                out.write(Date().toString()+"\r\n")
+                out.flush()
+                println(clientSocket.inetAddress.hostAddress)
+                clientSocket.close()
+
+            }
+            println("끝?")
+        }catch (e: Exception){
+
         }
     }
 }
