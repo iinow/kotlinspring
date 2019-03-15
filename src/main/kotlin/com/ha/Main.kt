@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 import org.yaml.snakeyaml.Yaml
@@ -40,14 +41,9 @@ class Main: CommandLineRunner {
 
 class Two {
     fun hello(args: Array<String>) {
-
-        val url = javaClass.getResource(Constant.Yaml.APP.getFilename())
-        val reader = YamlReader(FileReader(File(url.toURI())))
-        val yaml = reader.read(YamlConfig::class.java)
-
+        val yaml = YamlUtil.getReadObject(Constant.Yaml.APP, YamlConfig::class.java)
         val app = SpringApplication(Main::class.java)
         app.setDefaultProperties(yaml.getConfigurationInfo())
-
         app.run(*args)
     }
 }
