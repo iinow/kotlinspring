@@ -1,6 +1,7 @@
 package com.ha.ex.network.echo
 
 import java.net.InetSocketAddress
+import java.net.ServerSocket
 import java.nio.ByteBuffer
 import java.nio.channels.SelectionKey
 import java.nio.channels.Selector
@@ -82,5 +83,25 @@ class EchoServer{
 }
 
 fun main(args: Array<String>) {
-    EchoServer().start(232)
+//    EchoServer().start(232)
+    val logger = java.util.logging.Logger.getLogger(EchoServer::class.java.simpleName)
+    logger.info("ddddd")
+
+}
+
+fun serverSocket(){
+    val server = ServerSocket()
+    try {
+        val address = InetSocketAddress(332)
+        server.bind(address)
+    }catch (e: Exception){
+        println(e)
+    }finally {
+        server.close()
+    }
+
+    server.accept().close()
+
+    val logger = java.util.logging.Logger.getLogger(EchoServer::class.java.simpleName)
+    logger.severe("")
 }

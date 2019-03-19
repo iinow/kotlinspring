@@ -5,6 +5,12 @@ spring:
     host: 192.168.167.14
     port: 27017
     database: test
+    list:
+      -
+        name: 2323
+      -
+        name: 2929
+
 #    username:
 #    password:
 #    mongo.repositories.enabled: true

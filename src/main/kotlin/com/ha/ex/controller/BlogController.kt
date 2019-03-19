@@ -21,7 +21,7 @@ class BlogController {
     @Autowired
     private val blogService: BlogService? = null
 
-    @GetMapping
+    @GetMapping(name="", value = ["ddd", "ddd"])
     fun findAll(): Flux<Blog> {
         return mongoTemplate.findAll(Blog::class.java)
 //        return blogService!!.findAll()

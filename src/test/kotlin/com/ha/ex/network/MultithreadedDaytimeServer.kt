@@ -34,6 +34,7 @@ class MultithreadedDaytimeServer{
 fun main(args: Array<String>) {
     try {
         val server = ServerSocket(MultithreadedDaytimeServer.PORT)
+        println("START")
         while(true){
             try {
                 val connection = server.accept()
